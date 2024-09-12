@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -7,5 +7,16 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export default class ControlFlowComponent {
+
+  //nos creamos una señal
+  public showContent = signal(false);
+
+  //para cambiar la señal nos creamos un método
+  public toogleContent() {
+    //valor actual de la señal y el nuevo valor que es la negación del valor actual
+    this.showContent.update( value => !value );
+  }
+
+
 
 }
