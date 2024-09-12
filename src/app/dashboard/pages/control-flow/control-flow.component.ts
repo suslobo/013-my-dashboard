@@ -15,6 +15,11 @@ export default class ControlFlowComponent {
   public showContent = signal(false);
   //nos creamos otra señal, @switch
   public grade = signal<Grade>('A');
+  //nos creamos otra señal, @for
+  public frameworks = signal([ 'Angular', 'Vue', 'Svelte', 'Quik', 'React',]);
+  //lo duplicamos pero vacio
+  public frameworks2 = signal([]);
+
 
   //para cambiar la señal nos creamos un método
   public toogleContent() {
