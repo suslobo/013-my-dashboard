@@ -4,7 +4,6 @@
 <section>
   <h1 class="text-xl">Interacciones</h1>
   <hr class="my-2">
-
 <!-- y después carga este elemento con el defer -->
   @defer (on interaction) {
     <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
@@ -18,4 +17,84 @@
 
 </section>
 
+<section>
+  <hr class="my-2">
+  <button
+    #btnInteraction
+    class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white my-2">
+    Click me!
+  </button>
+<!-- que se dispare cuando haces click en el botón-->
+  @defer (on interaction( btnInteraction )) {
+    <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+      <span>On Interaction</span>
+    </app-heavy-loaders-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100"> <!-- si clicas se cambia al color azul, si no, se mantiene en purpura -->
+      Placeholder div
+    </div>
+  }
+
+</section>
+
+<section>
+  <hr class="my-2">
+<!-- que lo cargue cuando pasas el ratón por el placeholder-->
+  @defer (on hover) {
+    <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+      <span>On Interaction</span>
+    </app-heavy-loaders-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100"> <!-- si clicas se cambia al color azul, si no, se mantiene en purpura -->
+      Placeholder div
+    </div>
+  }
+
+</section>
+
+<section>
+  <hr class="my-2">
+<!-- que lo cargue en cuanto pueda sin bloquear la app-->
+  @defer (on immediate) {
+    <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+      <span>On Immediate</span>
+    </app-heavy-loaders-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100"> <!-- si clicas se cambia al color azul, si no, se mantiene en purpura -->
+      Placeholder div
+    </div>
+  }
+
+</section>
+
+<section>
+  <hr class="my-2">
+<!-- que lo cargue en cuanto pueda sin bloquear la app-->
+  @defer (on timer( 2000) ) {
+    <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+      <span>On Timer</span>
+    </app-heavy-loaders-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100"> <!-- si clicas se cambia al color azul, si no, se mantiene en purpura -->
+      2 segundos
+    </div>
+  }
+
+</section>
+
+<!-- una combinación de varios-->
+<section>
+  <hr class="my-2">
+<!-- multiple condición y cuando una de las condiciones se cumpla ahí es cuando empieza a realizar la carga-->
+  @defer (on hover; prefetch on idle ) {
+    <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+      <span>On hover, idle</span>
+    </app-heavy-loaders-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100"> <!-- si clicas se cambia al color azul, si no, se mantiene en purpura -->
+      Hover
+    </div>
+  }
+
+</section>
 
