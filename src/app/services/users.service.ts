@@ -1,16 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { User, UsersResponse } from '@interfaces/req-response';
-import { delay } from 'rxjs';
+import type { User, UsersResponse } from '@interfaces/req-response';
+import { delay, map } from 'rxjs';
 
 //creamos una interface
 interface State {
   users: User[];
   loading: boolean;
 }
-
-
-
 
 //nos creamos el primer servicio
 @Injectable({
@@ -44,6 +41,16 @@ export class UsersService {
         })
       });
     //vamos a inyectar nuestro servicio en users.component.ts
+   }
+
+   //creamos un método
+   //esto es un observable
+   getUserById( id: string) {
+    return this.http.get<UsersResponse>(`https://reqres.in/api/users/${ id }`)
+      .pipe(
+        delay(1500),
+        map( resp => resp.data) )
+
    }
 
 }
