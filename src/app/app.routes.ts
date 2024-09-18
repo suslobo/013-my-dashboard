@@ -46,6 +46,12 @@ export const routes: Routes = [
         title: 'View Transition 2',
         loadComponent: () => import('./dashboard/pages/view-transition/view-transition2.component'),
       },
+      {
+        path: 'inputs-outputs',
+        title: 'Inputs Outputs',
+        loadComponent: () => import('./dashboard/pages/input-output/input-output.component'),
+        //para que funcione tenemos que ir al componente y poner default en el export default class InputOutputComponent
+      },
 
       {
         path: '', redirectTo: 'control-flow', pathMatch:'full',
