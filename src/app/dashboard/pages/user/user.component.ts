@@ -1,6 +1,6 @@
 import { UserLoaderComponent } from './../../../shared/heavy-loaders/users-loader.component';
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '@interfaces/req-response';
@@ -12,7 +12,7 @@ import { UsersServiceService } from '../../../../../../011-directiveSignals/src/
   standalone: true,
   imports: [CommonModule, TitleComponent],
   template: `
-    <app-title title="User" />
+    <app-title [title]="titleLabel()" />
 
     <!-- si el usuario existe mostramos esta info -->
     @if ( user() ) {
@@ -42,15 +42,26 @@ export default class UserComponent {
 
   private route = inject( ActivatedRoute );
   private usersService = inject( UsersServiceService);
+
+
+
   //lo que queremos es tener aquí nuestra señal
   //la señal puede tener un usuario o ser undefined
   // public user = signal<User | undefined>(undefined);
-
   public user = toSignal(
     this.route.params.pipe(
       switchMap( ({ id }) => this.usersService.getUserById( id ) )
     )
-  )
+  );
+
+  public titleLabel = computed( () => {
+    //si tenemos información del usuario, hacemos un return que diga
+    if ( this.user() ) {
+      return `Información del usuario ${ this.user()?.first_name } ${ this.user()?.last_name }`;
+    }
+    //en caso contrario, si no tuvieramos la info
+    return 'Información del usuario';
+  });
 
 
 
