@@ -78,9 +78,12 @@ export const routes: Routes = [
   },
   {//cuando entras en la app esta es la ruta
     path: '',
-    redirectTo: '/dashboard',
+    // redirectTo: '/dashboard',
+    redirectTo: (route) => {
+      return 'dashboard/material';
+    },
     pathMatch: 'full'
-  }
+  },
 ];
 
 
