@@ -4,6 +4,12 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
+import {
+  MatBottomSheet,
+  MatBottomSheetModule,
+  MatBottomSheetRef,
+} from '@angular/material/bottom-sheet';
+import { OptionsBottomSheetComponent } from './ui/options-bottom-sheet/options-bottom-sheet.component';
 
 
 @Component({
@@ -14,11 +20,21 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatSlideToggleModule,
     MatIconModule,
     MatButtonModule,
-    MatBadgeModule],
+    MatBadgeModule,
+    MatBottomSheetModule,
+  ],
   templateUrl: './material.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 //default para asegurarnos que este es el componente que se va a ver por defecto
 export default class MaterialComponent {
+
+  constructor(private _bottomSheet: MatBottomSheet ) {}
+
+  //creamos método
+  openBottomSheet(): void {
+    this._bottomSheet.open(OptionsBottomSheetComponent);
+  }
+
 
 }
