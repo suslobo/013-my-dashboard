@@ -70,10 +70,15 @@ export const routes: Routes = [
         //para que funcione tenemos que ir al componente y poner default en el export default class InputOutputComponent
       },
       {
+        path: 'nuevo',
+        title: 'Nuevo Componente',
+        loadComponent: () => import('./dashboard/pages/nuevo/nuevo.component'),
+      },
+      {
         path: '',
         redirectTo: 'control-flow',
         pathMatch:'full',
-      }
+      },
     ]
   },
   {//cuando entras en la app esta es la ruta
