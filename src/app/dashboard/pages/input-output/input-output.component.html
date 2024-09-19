@@ -4,16 +4,10 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
 
-  <!-- en lugar del div de abajo ponemos nuestro componente product-card -->
+  @for (product of products(); track product.id) {
+  <!-- aquí ponemos nuestro product-card -->
   <app-product-card />
- <!--  <div class="bg-slate-200 w-full rounded-xl h-40 flex justify-center items-center flex-col">
-  <span>Producto 1</span>
-  <h2 class="font-bold text-sm my-2"># 1</h2>
-  <button
-    class="bg-blue-500 p-2 rounded text-white hover:bg-blue-600 transition-all"
-    >Agregar 1
-  </button>
-  </div> -->
 
+  }
 
 </div>
