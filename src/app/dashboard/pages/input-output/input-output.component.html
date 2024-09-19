@@ -6,7 +6,10 @@
 
   @for (product of products(); track product.id) {
   <!-- aquí ponemos nuestro product-card -->
-  <app-product-card />
+  <app-product-card
+    [product]="product"
+    (onIncrementQuantity)="updateProduct(product, $event)"
+  />
 
   }
 

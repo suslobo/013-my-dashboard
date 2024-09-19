@@ -50,5 +50,10 @@ export default class InputOutputComponent implements OnDestroy {
     this.intervalSubscription.unsubscribe();
   }
 
-
+  // public updateProduct(pdoduct: Product, quantity: number) {
+  //   this.products.update((products) =>
+  //     products.map((p) => p.id = products.id ? { ...p, quantity } : p
+  //     )
+  // );
+  // }
 }
